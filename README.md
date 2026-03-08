@@ -3,7 +3,7 @@
 [![C Language](https://img.shields.io/badge/Language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![Project Status](https://img.shields.io/badge/Status-Complete-green.svg)]()
 
-> Primeiro trabalho mensal 2026 - Analise e Desenvolvimento de Sistema - UniAmérica.
+> Primeiro trabalho mensal 2026 - Análise e Desenvolvimento de Sistema - UniAmérica.
 
 ---
 
