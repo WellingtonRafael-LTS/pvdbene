@@ -52,7 +52,7 @@ Este projeto foi desenvolvido aplicando os conceitos e ferramentas das seguintes
 * **Livro:** BACKES, André. *Linguagem C: Completa e Descomplicada*.
 * **Curso em Vídeo:** [Linguagem C - Começando do absoluto zero](https://www.youtube.com/watch?v=2w8GYzBjNj8&list=PLpaKFn4Q4GMOBAeqC1S5_Fna_Y5XaOQS2) Curso online.
 * **Apoio Teórico:** [Curso de Programação em C - UFSC](http://mtm.ufsc.br/~azeredo/cursoC/) - Material acadêmico.
-* **Apoio Teórico:** [Curso de Programação em C - Wagner Gaspar](https://wagnergaspar.com/curso-gratuito-de-programacao-c/).
+* **Apoio Teórico:** [Curso de Programação em C - Wagner Gaspar](https://wagnergaspar.com/curso-gratuito-de-programacao-c/) - Material acadêmico.
 
 **Códigos de Apoio**
 * **Repositório de Exercícios:** [GitHub misaelrezende/Exercicios-do-Livro-Linguagem-C](https://github.com/misaelrezende/Exercicios-do-Livro-Linguagem-C-Completa-e-Descomplicada).
