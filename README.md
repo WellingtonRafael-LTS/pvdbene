@@ -45,7 +45,7 @@ Este é um projeto **Console Procedural** que não requer bibliotecas externas, 
 
 ---
 
-## Referências e Créditos
+## Referência
 
 Este projeto foi desenvolvido aplicando os conceitos e ferramentas das seguintes fontes de estudo:
 
@@ -54,11 +54,12 @@ Este projeto foi desenvolvido aplicando os conceitos e ferramentas das seguintes
 * **Livro:** BACKES, André. *Linguagem C: Completa e Descomplicada*.
 * **Curso em Vídeo:** [Linguagem C - Começando do absoluto zero](https://www.youtube.com/watch?v=2w8GYzBjNj8&list=PLpaKFn4Q4GMOBAeqC1S5_Fna_Y5XaOQS2) Curso online.
 * **Apoio Teórico:** [Curso de Programação em C - UFSC](http://mtm.ufsc.br/~azeredo/cursoC/) - Material acadêmico.
+* **Apoio Teórico:** [Curso de Programação em C - Wagner Gaspar](https://wagnergaspar.com/curso-gratuito-de-programacao-c/).
 
 **Códigos de Apoio**
 * **Repositório de Exercícios:** [GitHub misaelrezende/Exercicios-do-Livro-Linguagem-C](https://github.com/misaelrezende/Exercicios-do-Livro-Linguagem-C-Completa-e-Descomplicada).
 * **C:** [Documentação da Linguagem C](https://en.cppreference.com/w/c).
 
 **Ferramentas**
-* **Tipografia do Terminal:** [Patorjk's ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Big+Money-nw&t=MERCADINHO+SHOP&x=none&v=4&h=4&w=80&we=false)
+* **Tipografia do Terminal:** [ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Big+Money-nw&t=MERCADINHO+SHOP&x=none&v=4&h=4&w=80&we=false)
 * **Badges do Repositório:** [Shields.io](https://shields.io/).
