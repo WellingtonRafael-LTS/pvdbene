@@ -38,41 +38,36 @@
 
 int main(){ // Inicio do Sistema, inicia um main do tipo inteiro.
 
-// --- ESPAÇO PARA DECLAÇÃO DE VARIAVÉL do tipo INTEIRO.
-// Declara a variavél inicial em 0 para limpar o lixo do sistema.
-    int quantidade_vendas = 0; //Variavel usada para armazenar a quantidade de vendas realizadas durante a execução do sistema, atualizada a cada finalização de pagamento para manter um registro do número total de transações concluídas.
-    int opcao = 0; //Variavel armazena a escolha do usuario no menu principal e nos sub-menus, usada para direcionar o fluxo do sistema.
-    int codigo = 0; //Variavel armazena o codigo do produto selecionado pelo usuario nos sub-menus, usada para identificar o produto escolhido e calcular os subtotais.
-    int quantidade = 0; //Variavel armazena a quantidade desejada do produto selecionado pelo usuario, usada para calcular os subtotais e atualizar o total de itens.
-    int total_itens = 0; //Variavel acumuladora que armazena o total geral de itens no carrinho geral, atualizada a cada adição de produto para refletir o total de itens em todas as categorias (limpeza + alimentos + padaria).
-    int total_itens_limpeza = 0; //Variavel acumuladora que armazena o total de itens no carrinho da categoria limpeza.
-    int total_itens_padaria = 0; //Variavel acumuladora que armazena o total de itens no carrinho da categoria padaria.
-    int total_itens_alimentos = 0; //Variavel acumuladora que armazena o total de itens no carrinho da categoria alimentos.
-    int pag = 0; //Variavel armazena a escolha do usuario no menu de pagamento, usada para direcionar o fluxo do sistema e calcular descontos.
-    int verificador = 0; //Variavel usada para armazenar o codigo de retorno da funcao scanf, usada para validar se o input do usuario foi do tipo esperado (inteiro) e para acionar o tratamento de erro em caso de falha de leitura (type mismatch).
-    int porcentagem_desconto = 0; //Variavel usada para armazenar a porcentagem de desconto selecionada pelo usuario no menu de pagamento, usada para calcular o valor do desconto aplicado e atualizar o valor total a ser pago.
+// --- ESPACO PARA DECLARACAO DE VARIAVEL DO TIPO INTEIRO
+    int quantidade_vendas = 0; // Total de vendas finalizadas no sistema.
+    int opcao = 0;             // Opcao para selecao no menu.
+    int codigo = 0;            // Codigo do produto escolhido.
+    int quantidade = 0;        // Quantidade do item para calculo de subtotal.
+    int total_itens = 0;       // Acumulador geral de itens no carrinho.
+    int total_itens_limpeza = 0;   // Total de itens da categoria limpeza.
+    int total_itens_padaria = 0;   // Total de itens da categoria padaria.
+    int total_itens_alimentos = 0; // Total de itens da categoria alimentos.
+    int pag = 0;               // Escolha da forma de pagamento.
+    int verificador = 0;       // Retorno do scanf para validar se o input e inteiro.
+    int porcentagem_desconto = 0; // Porcentagem de desconto atribuido.
 
-// --- ESPAÇO PARA DECLAÇÃO DE VARIAVÉL do tipo FLOAT (Ponto flutuante).
-// Declara a variavél inicial em 0 para limpar o lixo do sistema.
-// DESCONTOS E VALORES FINAIS.
-    float faturamento_diario = 0.0; //Variavel acumuladora que armazena o valor total do faturamento diário, atualizada a cada finalização de pagamento para refletir o total de vendas realizadas. 
-    float valor_desconto_aplicado = 0; //Variavel usada para armazenar o valor do desconto aplicado no pagamento, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
-    float troco = 0; //Variavel usada para armazenar o valor do troco a ser devolvido ao cliente no menu de pagamento, calculado com base no valor recebido e no valor total a ser pago.
-    float valor_recebido = 0; //Variavel usada para armazenar o valor recebido do cliente no menu de pagamento, usada para calcular o troco e validar se o valor é suficiente para cobrir o valor total a ser pago.
-    float desconto5 = 0; //Variavel usada para armazenar o valor do desconto de 5% aplicado no pagamento, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
-    float desconto10 = 0; //Variavel usada para armazenar o valor do desconto de 10% aplicado no pagamento, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
-    float desconto18 = 0; //Variavel usada para armazenar o valor do desconto de 18% aplicado no pagamento, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
-    float valor_total = 0; //Variavel usada para armazenar o valor total a ser pago após a aplicação de descontos, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
-// TOTAIS DE CATEGORIAS E GERAL.   
-    float total_limpeza = 0; //Variavel acumuladora que armazena o total geral do carrinho da categoria limpeza, atualizada a cada adição de produto para refletir o total gasto em produtos de limpeza.
-    float total_alimentos = 0; //Variavel acumuladora que armazena o total geral do carrinho da categoria alimentos, atualizada a cada adição de produto para refletir o total gasto em produtos de alimentos.
-    float total_padaria = 0; //Variavel acumuladora que armazena o total geral do carrinho da categoria padaria, atualizada a cada adição de produto para refletir o total gasto em produtos de padaria.
-    float total_geral = 0; //Variavel acumuladora que armazena o total geral do carrinho, atualizada a cada adição de produto para refletir o total gasto em todos os produtos.
+// --- ESPACO PARA DECLARACAO DE VARIAVEL DO TIPO FLOAT
+// DESCONTOS E VALORES FINAIS
+    float faturamento_diario = 0.0; // Soma de todas as vendas do dia.
+    float valor_desconto_aplicado = 0; // Valor em reais do desconto calculado.
+    float troco = 0;           // Valor a devolver para o cliente.
+    float valor_recebido = 0;  // Valor entregue pelo cliente no pagamento.
+    float valor_total = 0;     // Valor final a pagar com descontos aplicados.
 
-// --- ESPAÇO PARA DECLAÇÃO DE VARIAVÉL do tipo CHAR.
-// Declara a variavél inicial em 0 para limpar o lixo do sistema.
-    char tecla = 0;
-    char lixo_de_memoria = 0;
+// TOTAIS DE CATEGORIAS E GERAL
+    float total_limpeza = 0;   // Subtotal acumulado de produtos de limpeza.
+    float total_alimentos = 0; // Subtotal acumulado de produtos de alimentos.
+    float total_padaria = 0;   // Subtotal acumulado de produtos de padaria.
+    float total_geral = 0;     // Soma de todos os itens antes do desconto.
+
+// --- ESPACO PARA DECLARACAO DE VARIAVEL DO TIPO CHAR
+    char tecla = 0;            // Captura entrada de teclado.
+    char lixo_de_memoria = 0;  // Limpeza de buffer/caracteres residuais.
 
 // --- MENSAGEM DE BOAS VINDAS E CONFIRMAÇÃO DE INPUT.
 
