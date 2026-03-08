@@ -1435,6 +1435,11 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                         do { 
                                             scanf("%c", &lixo_de_memoria); 
                                         } while (lixo_de_memoria != '\n');
+                                        total_alimentos = 0;
+                                        total_limpeza = 0;
+                                        total_padaria = 0;
+                                        total_geral = 0;
+                                        pag = 5;
                                     } else if (pag == 2){
                                         printf("Pagamento recusado, por favor tente novamente ou escolha outro metodo de pagamento.\n");
                                         printf("Por favor, pressione ENTER para continuar..."); 
@@ -1459,7 +1464,8 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                     printf("\n[ ERRO ] Valor total invalido! O valor total com desconto nao pode ser nulo ou negativo. Por favor, revise os itens do carrinho e tente novamente.\n");
                                     printf("Por favor, pressione ENTER para continuar..."); 
                                     scanf("%c", &tecla); 
-                                } else if (valor_total > 0 && valor_total <= 50){
+                                } else {                                   
+                                    if (valor_total > 0 && valor_total <= 50){
                                     desconto5 = valor_total * 0.05;
                                     valor_total -= desconto5;
                                     printf("\n==================================\n");
@@ -1472,7 +1478,7 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                     printf("|   Obrigado pela preferencia!   |\n");
                                     printf("==================================\n\n");
                                     printf("Por favor, pressione ENTER para continuar..."); 
-                                    scanf("%c", &tecla); 
+                                    scanf("%c", &tecla);
                                 } else if (valor_total > 50 && valor_total < 100){
                                     desconto10 = valor_total * 0.10;
                                     valor_total -= desconto10;
@@ -1486,7 +1492,7 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                     printf("|   Obrigado pela preferencia!   |\n");
                                     printf("==================================\n\n");
                                     printf("Por favor, pressione ENTER para continuar..."); 
-                                    scanf("%c", &tecla); 
+                                    scanf("%c", &tecla);                                
                                 } else if (valor_total >= 100){
                                     desconto18 = valor_total * 0.18;
                                     valor_total -= desconto18;
@@ -1500,10 +1506,14 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                     printf("|   Obrigado pela preferencia!   |\n");
                                     printf("==================================\n\n");
                                     printf("Por favor, pressione ENTER para continuar...");  
-                                    scanf("%c", &tecla); 
-                                }
-                                break;
-
+                                    scanf("%c", &tecla);}                                                               
+                                    total_alimentos = 0;
+                                    total_limpeza = 0;
+                                    total_padaria = 0;
+                                    total_geral = 0;
+                                    pag = 5;
+                                }    
+                                    break;
                             case 5:
                                 printf("Saindo da aba de Pagamento!\n"); 
                                 printf("\nPor favor, pressione ENTER para continuar...");
