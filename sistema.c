@@ -40,6 +40,7 @@ int main(){ // Inicio do Sistema, inicia um main do tipo inteiro.
 
 // --- ESPAÇO PARA DECLAÇÃO DE VARIAVÉL do tipo INTEIRO.
 // Declara a variavél inicial em 0 para limpar o lixo do sistema.
+    int quantidade_vendas = 0; //Variavel usada para armazenar a quantidade de vendas realizadas durante a execução do sistema, atualizada a cada finalização de pagamento para manter um registro do número total de transações concluídas.
     int opcao = 0; //Variavel armazena a escolha do usuario no menu principal e nos sub-menus, usada para direcionar o fluxo do sistema.
     int codigo = 0; //Variavel armazena o codigo do produto selecionado pelo usuario nos sub-menus, usada para identificar o produto escolhido e calcular os subtotais.
     int quantidade = 0; //Variavel armazena a quantidade desejada do produto selecionado pelo usuario, usada para calcular os subtotais e atualizar o total de itens.
@@ -49,11 +50,15 @@ int main(){ // Inicio do Sistema, inicia um main do tipo inteiro.
     int total_itens_alimentos = 0; //Variavel acumuladora que armazena o total de itens no carrinho da categoria alimentos.
     int pag = 0; //Variavel armazena a escolha do usuario no menu de pagamento, usada para direcionar o fluxo do sistema e calcular descontos.
     int verificador = 0; //Variavel usada para armazenar o codigo de retorno da funcao scanf, usada para validar se o input do usuario foi do tipo esperado (inteiro) e para acionar o tratamento de erro em caso de falha de leitura (type mismatch).
-
+    int porcentagem_desconto = 0; //Variavel usada para armazenar a porcentagem de desconto selecionada pelo usuario no menu de pagamento, usada para calcular o valor do desconto aplicado e atualizar o valor total a ser pago.
 
 // --- ESPAÇO PARA DECLAÇÃO DE VARIAVÉL do tipo FLOAT (Ponto flutuante).
 // Declara a variavél inicial em 0 para limpar o lixo do sistema.
 // DESCONTOS E VALORES FINAIS.
+    float faturamento_diario = 0.0; //Variavel acumuladora que armazena o valor total do faturamento diário, atualizada a cada finalização de pagamento para refletir o total de vendas realizadas. 
+    float valor_desconto_aplicado = 0; //Variavel usada para armazenar o valor do desconto aplicado no pagamento, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
+    float troco = 0; //Variavel usada para armazenar o valor do troco a ser devolvido ao cliente no menu de pagamento, calculado com base no valor recebido e no valor total a ser pago.
+    float valor_recebido = 0; //Variavel usada para armazenar o valor recebido do cliente no menu de pagamento, usada para calcular o troco e validar se o valor é suficiente para cobrir o valor total a ser pago.
     float desconto5 = 0; //Variavel usada para armazenar o valor do desconto de 5% aplicado no pagamento, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
     float desconto10 = 0; //Variavel usada para armazenar o valor do desconto de 10% aplicado no pagamento, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
     float desconto18 = 0; //Variavel usada para armazenar o valor do desconto de 18% aplicado no pagamento, calculado com base no total geral do carrinho e atualizado no menu de pagamento.
@@ -1395,9 +1400,15 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                     do {
                         system("cls || clear");
                         total_geral = total_alimentos + total_limpeza + total_padaria;
+    
                         printf("==================================\n");
                         printf("|    --- MENU DE PAGAMENTO ---   |\n");
-                        printf("==================================\n");                        
+                        printf("==================================\n");
+                        printf("| RESUMO DOS ITENS:              |\n");
+                        printf("| Limpeza:       R$ %.2f         |\n", total_limpeza);
+                        printf("| Alimentos:     R$ %.2f         |\n", total_alimentos);
+                        printf("| Padaria:       R$ %.2f         |\n", total_padaria);
+                        printf("==================================\n");
                         printf("| [ 01 ] Cartao                  |\n");              
                         printf("| [ 02 ] Dinheiro                |\n");
                         printf("| [ 05 ] Sair                    |\n");
@@ -1430,7 +1441,9 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                     scanf("%d", &pag);
                                     if (pag == 1){
                                         printf("Pagamento aprovado, obrigado pela preferencia!\n");
-                                        printf("Por favor, pressione ENTER para continuar..."); 
+                                        printf("Por favor, pressione ENTER para continuar...");
+                                        quantidade_vendas++;
+                                        faturamento_diario += total_geral;
                                         scanf("%c", &tecla);
                                         do { 
                                             scanf("%c", &lixo_de_memoria); 
@@ -1439,6 +1452,10 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                         total_limpeza = 0;
                                         total_padaria = 0;
                                         total_geral = 0;
+                                        total_itens = 0;
+                                        total_itens_padaria = 0;
+                                        total_itens_alimentos = 0;
+                                        total_itens_limpeza = 0;
                                         pag = 5;
                                     } else if (pag == 2){
                                         printf("Pagamento recusado, por favor tente novamente ou escolha outro metodo de pagamento.\n");
@@ -1457,63 +1474,66 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                 printf("\nCalculando desconto para pagamento em dinheiro...\n");
                                 do { 
                                     scanf("%c", &lixo_de_memoria); 
-                                } while (lixo_de_memoria != '\n');
+                                } while (lixo_de_memoria != '\n');                               
                                 printf("Por favor, pressione ENTER para continuar..."); 
-                                scanf("%c", &tecla); 
+                                scanf("%c", &tecla);                                 
                                 if (valor_total <= 0) {
-                                    printf("\n[ ERRO ] Valor total invalido! O valor total com desconto nao pode ser nulo ou negativo. Por favor, revise os itens do carrinho e tente novamente.\n");
+                                    printf("\n[ ERRO ] Valor total invalido! O valor total com desconto nao pode ser nulo ou negativo.\n");
                                     printf("Por favor, pressione ENTER para continuar..."); 
                                     scanf("%c", &tecla); 
-                                } else {                                   
-                                    if (valor_total > 0 && valor_total <= 50){
-                                    desconto5 = valor_total * 0.05;
-                                    valor_total -= desconto5;
+                                } else {                                
+                                    if (valor_total > 0 && valor_total <= 50) {
+                                        valor_desconto_aplicado = valor_total * 0.05;
+                                        porcentagem_desconto = 5;
+                                    } else if (valor_total > 50 && valor_total < 100) {
+                                        valor_desconto_aplicado = valor_total * 0.10;
+                                        porcentagem_desconto = 10;
+                                    } else if (valor_total >= 100) {
+                                        valor_desconto_aplicado = valor_total * 0.18;
+                                        porcentagem_desconto = 18;
+                                    }
+                                    valor_total -= valor_desconto_aplicado;
+                                    printf("\nTotal a pagar com desconto: R$ %.2f\n", valor_total);  
+                                    do {
+                                        printf("Informe o valor recebido do cliente: R$ ");
+                                        scanf("%f", &valor_recebido);
+                                        
+                                        if (valor_recebido < valor_total) {
+                                            printf("\n[ ERRO ] Dinheiro insuficiente! Faltam R$ %.2f. Tente novamente.\n", valor_total - valor_recebido);
+                                        }
+                                    } while (valor_recebido < valor_total);
+                                    troco = valor_recebido - valor_total;
+                                    quantidade_vendas++;
+                                    faturamento_diario += total_geral;
                                     printf("\n==================================\n");
                                     printf("|       STATUS DO PAGAMENTO      |\n");
                                     printf("==================================\n");
                                     printf("| Metodo selecionado: DINHEIRO   |\n");
-                                    printf("| Desconto [5%%]: R$ %.2f        |\n", desconto5); // O %-13.2f alinha o numero à esquerda e empurra a barra vertical pro lugar certo
-                                    printf("| Total com desconto: R$ %.2f    |\n", valor_total);
+                                    printf("| Desconto [%d%%]: R$ %.2f       |\n", porcentagem_desconto, valor_desconto_aplicado);
+                                    printf("| Total c/ desconto: R$ %.2f   |\n", valor_total);
+                                    printf("| Valor Recebido: R$ %.2f      |\n", valor_recebido);
+                                    printf("| Troco a devolver: R$ %.2f     |\n", troco);
                                     printf("==================================\n");
                                     printf("|   Obrigado pela preferencia!   |\n");
-                                    printf("==================================\n\n");
+                                    printf("==================================\n\n");                                   
+                                    do { 
+                                        scanf("%c", &lixo_de_memoria); 
+                                    } while (lixo_de_memoria != '\n');   
                                     printf("Por favor, pressione ENTER para continuar..."); 
                                     scanf("%c", &tecla);
-                                } else if (valor_total > 50 && valor_total < 100){
-                                    desconto10 = valor_total * 0.10;
-                                    valor_total -= desconto10;
-                                    printf("\n==================================\n");
-                                    printf("|       STATUS DO PAGAMENTO      |\n");
-                                    printf("==================================\n");
-                                    printf("| Metodo selecionado: DINHEIRO   |\n");
-                                    printf("| Desconto [10%%]: R$ %.2f       |\n", desconto10); // O %-13.2f alinha o numero à esquerda e empurra a barra vertical pro lugar certo
-                                    printf("| Total com desconto: R$ %.2f    |\n", valor_total);
-                                    printf("==================================\n");
-                                    printf("|   Obrigado pela preferencia!   |\n");
-                                    printf("==================================\n\n");
-                                    printf("Por favor, pressione ENTER para continuar..."); 
-                                    scanf("%c", &tecla);                                
-                                } else if (valor_total >= 100){
-                                    desconto18 = valor_total * 0.18;
-                                    valor_total -= desconto18;
-                                    printf("\n==================================\n");
-                                    printf("|       STATUS DO PAGAMENTO      |\n");
-                                    printf("==================================\n");
-                                    printf("| Metodo selecionado: DINHEIRO   |\n");
-                                    printf("| Desconto [18%%]: R$ %.2f|\n", desconto18); // O %-13.2f alinha o numero à esquerda e empurra a barra vertical pro lugar certo
-                                    printf("| Total com desconto: R$ %.2f|\n", valor_total);
-                                    printf("==================================\n");
-                                    printf("|   Obrigado pela preferencia!   |\n");
-                                    printf("==================================\n\n");
-                                    printf("Por favor, pressione ENTER para continuar...");  
-                                    scanf("%c", &tecla);}                                                               
+
                                     total_alimentos = 0;
                                     total_limpeza = 0;
                                     total_padaria = 0;
                                     total_geral = 0;
+                                    total_itens = 0;
+                                    total_itens_padaria = 0;
+                                    total_itens_alimentos = 0;
+                                    total_itens_limpeza = 0;
                                     pag = 5;
                                 }    
-                                    break;
+                                break;
+
                             case 5:
                                 printf("Saindo da aba de Pagamento!\n"); 
                                 printf("\nPor favor, pressione ENTER para continuar...");
@@ -1537,7 +1557,15 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                 break;
 
                 case 5:
-                    printf("Encerrando o sistema, ate logo!\n");
+                    system("cls || clear");
+                    printf("===========================================\n");
+                    printf("|          FECHAMENTO DE CAIXA            |\n");
+                    printf("===========================================\n");
+                    printf("| Quantidade de vendas hoje: %d           |\n", quantidade_vendas);
+                    printf("| Faturamento Total: R$ %.2f              |\n", faturamento_diario);
+                    printf("===========================================\n");
+                    printf("|  Sistema Encerrado. Bom descanso!       |\n");
+                    printf("===========================================\n\n");
                     printf("\nPor favor, pressione ENTER para continuar..."); 
                     scanf("%c", &tecla);
                     do {
