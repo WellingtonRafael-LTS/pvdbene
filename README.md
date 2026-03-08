@@ -3,7 +3,7 @@
 [![C Language](https://img.shields.io/badge/Language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![Project Status](https://img.shields.io/badge/Status-Complete-green.svg)]()
 
-> Primeiro trabalho mensal 2026 - Analise e Desenvolvimento de Sistema - UniAmérica.
+> Primeiro trabalho mensal 2026 - Análise e Desenvolvimento de Sistema - UniAmérica.
 
 ---
 
@@ -30,12 +30,12 @@ Este é um projeto **Console Procedural** que não requer bibliotecas externas, 
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/WellingtonRafael-LTS/pvdbene.git](https://github.com/WellingtonRafael-LTS/pvdbene.git)
+    git clone https://github.com/WellingtonRafael-LTS/pvdbene.git
     cd pvdbene
     ```
 2.  **Compile o código:**
     ```bash
-    gcc sistema.c -o sisbene
+    gcc sistema.c -o sistema.exe
     ```
 3.  **Execute o programa:**
     * No Windows: `sisbene.exe`
@@ -52,7 +52,7 @@ Este projeto foi desenvolvido aplicando os conceitos e ferramentas das seguintes
 * **Livro:** BACKES, André. *Linguagem C: Completa e Descomplicada*.
 * **Curso em Vídeo:** [Linguagem C - Começando do absoluto zero](https://www.youtube.com/watch?v=2w8GYzBjNj8&list=PLpaKFn4Q4GMOBAeqC1S5_Fna_Y5XaOQS2) Curso online.
 * **Apoio Teórico:** [Curso de Programação em C - UFSC](http://mtm.ufsc.br/~azeredo/cursoC/) - Material acadêmico.
-* **Apoio Teórico:** [Curso de Programação em C - Wagner Gaspar](https://wagnergaspar.com/curso-gratuito-de-programacao-c/).
+* **Apoio Teórico:** [Curso de Programação em C - Wagner Gaspar](https://wagnergaspar.com/curso-gratuito-de-programacao-c/) - Material acadêmico.
 
 **Códigos de Apoio**
 * **Repositório de Exercícios:** [GitHub misaelrezende/Exercicios-do-Livro-Linguagem-C](https://github.com/misaelrezende/Exercicios-do-Livro-Linguagem-C-Completa-e-Descomplicada).
