@@ -30,12 +30,12 @@ Este é um projeto **Console Procedural** que não requer bibliotecas externas, 
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/WellingtonRafael-LTS/pvdbene.git](https://github.com/WellingtonRafael-LTS/pvdbene.git)
+    git clone https://github.com/WellingtonRafael-LTS/pvdbene.git
     cd pvdbene
     ```
 2.  **Compile o código:**
     ```bash
-    gcc sistema.c -o sisbene
+    gcc sistema.c -o sistema.exe
     ```
 3.  **Execute o programa:**
     * No Windows: `sisbene.exe`
