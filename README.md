@@ -11,9 +11,7 @@
 
 Aqui você vê o sistema em ação, desde o menu principal até a finalização do pagamento com desconto.
 
-![GIF Demonstrativo do Funcionamento do SisBene]([LINK_DO_SEU_GIF_AQUI])
-
-*(Caso o GIF não carregue, você pode assistir à gravação completa clicando [aqui]([LINK_OPCIONAL_DO_YOUTUBE_AQUI])).*
+![Animação_1](https://github.com/user-attachments/assets/2d25868e-18f2-4749-98d0-2f91756087dd)
 
 ### Features
 
