@@ -1394,7 +1394,7 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
 
                     do {
                         system("cls || clear");
-                        total_geral = total_alimentos + total_limpeza + total_padaria;
+                        total_geral = total_alimentos + total_limpeza + total_padaria; //Calcula o total geral somando os subtotais de cada categoria.
     
                         printf("==================================\n");
                         printf("|    --- MENU DE PAGAMENTO ---   |\n");
@@ -1416,10 +1416,10 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                         switch(pag){
 
                             case 1:
-                                valor_total = total_geral;
+                                valor_total = total_geral; //Atribui o total_geral ao valor_geral (para as operações).
                                 printf("\nSELECIONADO CARTAO!\n" );
                                 do { 
-                                    scanf("%c", &lixo_de_memoria); 
+                                    scanf("%c", &lixo_de_memoria);  //Limpeza do buffer.
                                 } while (lixo_de_memoria != '\n');
                                 printf("Por favor, pressione ENTER para continuar..."); 
                                 scanf("%c", &tecla);
@@ -1437,13 +1437,13 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                     if (pag == 1){
                                         printf("Pagamento aprovado, obrigado pela preferencia!\n");
                                         printf("Por favor, pressione ENTER para continuar...");
-                                        quantidade_vendas++;
-                                        faturamento_diario += total_geral;
+                                        quantidade_vendas++; //Incrementa a quantidade de vendas realizadas no dia.
+                                        faturamento_diario += total_geral; //Atualiza o faturamento diário somando o total geral da venda atual ao acumulador faturamento_diario.
                                         scanf("%c", &tecla);
                                         do { 
                                             scanf("%c", &lixo_de_memoria); 
                                         } while (lixo_de_memoria != '\n');
-                                        total_alimentos = 0;
+                                        total_alimentos = 0; //Zera os totais de itens e valor para iniciar uma nova venda.
                                         total_limpeza = 0;
                                         total_padaria = 0;
                                         total_geral = 0;
@@ -1487,7 +1487,7 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                         valor_desconto_aplicado = valor_total * 0.18;
                                         porcentagem_desconto = 18;
                                     }
-                                    valor_total -= valor_desconto_aplicado;
+                                    valor_total -= valor_desconto_aplicado; //Aplica o desconto ao valor total a pagar.
                                     printf("\nTotal a pagar com desconto: R$ %.2f\n", valor_total);  
                                     do {
                                         printf("Informe o valor recebido do cliente: R$ ");
@@ -1496,8 +1496,8 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                         if (valor_recebido < valor_total) {
                                             printf("\n[ ERRO ] Dinheiro insuficiente! Faltam R$ %.2f. Tente novamente.\n", valor_total - valor_recebido);
                                         }
-                                    } while (valor_recebido < valor_total);
-                                    troco = valor_recebido - valor_total;
+                                    } while (valor_recebido < valor_total); //Garante que o valor recebido seja suficiente para cobrir o faturamento.
+                                    troco = valor_recebido - valor_total; //Calcula o troco a ser devolvido ao cliente.
                                     quantidade_vendas++;
                                     faturamento_diario += total_geral;
                                     printf("\n==================================\n");
@@ -1509,7 +1509,7 @@ scanf("%c", &tecla); //A função scanf le o input do usuario e armazena na vari
                                     printf("| Valor Recebido: R$ %.2f      |\n", valor_recebido);
                                     printf("| Troco a devolver: R$ %.2f     |\n", troco);
                                     printf("==================================\n");
-                                    printf("|   Obrigado pela preferencia!   |\n");
+                                    printf("|   Obrigado pela preferencia!   |\n"); 
                                     printf("==================================\n\n");                                   
                                     do { 
                                         scanf("%c", &lixo_de_memoria); 
